@@ -1,0 +1,26 @@
+<mat-toolbar style="background-color: rgb(26, 20, 25);color:white">
+ 
+  <a  class="navbar-brand" routerLink="/home"><span>E-commerce</span> </a>
+ 
+  <span class="example-spacer"></span>
+  
+  <button mat-raised-button class="example-icon favorite-icon" 
+  aria-label="Example icon-button with heart icon" type="button" class="btn btn-success"
+  *ngIf="! isLoggedIn()" type="button"  routerLink="/login"
+  >
+    login
+   
+  </button>
+  <button mat-raised-button class="example-icon" 
+  aria-label="Example icon-button with share icon" type="button" class="btn btn-danger"
+  *ngIf="isLoggedIn()"type="button" class="btn btn-danger " (click)="logout()"
+  >
+    logout
+    
+  </button>
+</mat-toolbar>
+<mat-toolbar *ngIf="isLoggedIn()" color="primary">
+  <button mat-raised-button  routerLink="/" >Home </button>
+  
+  <button *ngIf="isAdmin()" mat-raised-button routerLink="/addNewProduct" >Add Product</button>
+   </mat-toolbar>
