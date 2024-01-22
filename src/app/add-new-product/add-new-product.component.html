@@ -12,23 +12,35 @@
                         <mat-label>Product Description</mat-label>
                         <input matInput [(ngModel)]="product.productDescription" placeholder="product description"
                             name="productDescription">
-                    </mat-form-field> <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Product Actual Drice</mat-label>
-                        <input matInput [(ngModel)]="product.productActualPrice" placeholder="product Actual Price"
-                            name="productActualPrice">
-                    </mat-form-field> <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Product discount price</mat-label>
-                        <input matInput [(ngModel)]="product.productDiscount" placeholder="product discount price"
-                            name="productDiscount">
-                        <div align="end"></div>
                     </mat-form-field>
+                    <mat-form-field floatLabel="always" class="w-100">
+                        <mat-label>Product Actual Price</mat-label>
+                        <input matInput type="number" class="example-right-align"
+                            [(ngModel)]="product.productActualPrice" placeholder="product Actual Price"
+                            name="productActualPrice">
+                        <span matTextPrefix>TND&nbsp;</span>
+                        <span matTextSuffix>.00</span>
+                    </mat-form-field>
+                    <mat-form-field floatLabel="always" class="w-100">
+                        <mat-label>Product discount price</mat-label>
+                        <input matInput type="number" class="example-right-align" [(ngModel)]="product.productDiscount"
+                            placeholder="product discount price" name="productDiscount">
+                        <span matTextPrefix>TND&nbsp;</span>
+                        <span matTextSuffix>.00</span>
+                    </mat-form-field>
+
+
                     <button mat-stroked-button color="primary" type="reset" style="margin-right: 3px;"> Clear</button>
                     <button mat-stroked-button color="primary" type="submit"> Add</button>
                 </form>
             </div>
 
             <div class="col-6">
-                Image <area shape="circle" coords="" href="" alt="">
+               <input type="file" name="" id="" multiple value="select" #selectFile
+               (change)="onFileSlected($event)">
+               
+
+               
             </div>
         </div>
 

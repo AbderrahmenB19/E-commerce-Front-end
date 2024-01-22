@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { publicDecrypt } from 'crypto';
+
 import { Product } from '../_model/product.model';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class ProductService {
   
 
   constructor(private http:HttpClient) { }
-  public addProduct(product:any){
+  public addProduct(product:FormData){
     return this.http.post("http://localhost:9090/product/addNewProduct",product);
   }
 }
