@@ -20,6 +20,8 @@ import { AddNewProductComponent } from './add-new-product/add-new-product.compon
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { DragDirective } from './drag.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {MatInputModule} from '@angular/material/input';
     LoginComponent,
     HeaderComponent,
     ForbiddenComponent,
-    AddNewProductComponent
+    AddNewProductComponent,
+    DragDirective
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule
     
   
   ],

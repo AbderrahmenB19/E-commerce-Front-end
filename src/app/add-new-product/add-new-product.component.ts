@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Product } from '../_model/product.model';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../_services/product.service';
@@ -13,6 +13,7 @@ import { FileHandle } from '../_model/file-handle';
   styleUrl: './add-new-product.component.css'
 })
 export class AddNewProductComponent {
+  @ViewChild('el')inputRef!: ElementRef;
   product:Product={
     productName:"",
     productDescription:"",
@@ -28,6 +29,15 @@ export class AddNewProductComponent {
       next:(resp) => console.log(resp),
       error:(er:HttpErrorResponse)=>console.log(er)
     });
+    this.product={
+      productName:"",
+      productDescription:"",
+      productDiscount:0,
+      productActualPrice:0,
+      productImages:[]
+  
+    }
+    
 
 
   }
@@ -62,6 +72,14 @@ export class AddNewProductComponent {
       
     }
 
+  }
+  onRemoveImages(i:number){
+    this.product.productImages.splice(i,1)
+
+    
+  }
+  fileDropped(event:any){
+    this.product.productImages.push(event);
   }
 
 }

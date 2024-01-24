@@ -36,8 +36,40 @@
             </div>
 
             <div class="col-6">
-               <input type="file" name="" id="" multiple value="select" #selectFile
-               (change)="onFileSlected($event)">
+               <div class="mt-5">
+                <div class="dropZone"
+                appDrag (files)="fileDropped($event)">
+                    <div class="text">
+                        Drop ur file or <span style="color: blue; cursor: pointer; " (click)="selectFile.click()">browse</span> a file
+                    </div>
+
+                </div>
+
+
+
+
+
+                <input type="file" name="" id="" multiple value="select" #selectFile
+               (change)="onFileSlected($event)" style="display: none;">
+               </div>
+               <div class="mt-5">
+                <div class="row">
+                    <mat-grid-list cols="4" rowHeight="1:1">
+                        <mat-grid-tile *ngFor="let file of product.productImages; let i=index">
+                            <div style="position: relative;">
+                                <span class="btn-remove-file" (click)="onRemoveImages(i)">X</span>
+                                <img [src]="file.url" alt="images of product" style="width: 100px;height: 100px;"#el>
+
+                            </div>
+
+                        </mat-grid-tile>
+
+                    </mat-grid-list>
+
+                </div>
+               </div>
+              
+
                
 
                
