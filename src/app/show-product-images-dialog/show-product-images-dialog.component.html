@@ -1,0 +1,16 @@
+<div class="container mt-5">
+    <div
+        class="row justify-content-center align-items-center g-2"
+    >
+    <mat-grid-list cols="4" rowHeight="2:1">
+        <mat-grid-tile *ngFor="let m of  data.images">
+            <div style="position: relative;">
+                <img [src]="m.url" style="width: 100%;height: auto;">
+            </div>
+        </mat-grid-tile>
+        
+      </mat-grid-list>
+        
+    </div>
+    
+</div>

@@ -7,10 +7,18 @@ import { Product } from '../_model/product.model';
   providedIn: 'root'
 })
 export class ProductService {
+  API_PATH="http://localhost:9090/product/";
   
 
   constructor(private http:HttpClient) { }
   public addProduct(product:FormData){
-    return this.http.post("http://localhost:9090/product/addNewProduct",product);
+    return this.http.post(this.API_PATH+"addNewProduct",product);
   }
+  public getAllProduct(){
+    return this.http.get(this.API_PATH+"getAllProduct")
+  }
+  public deletProduct(productId:number){
+    return this.http.delete(this.API_PATH+`deleteProduct/${productId}`)
+  }
+ 
 }

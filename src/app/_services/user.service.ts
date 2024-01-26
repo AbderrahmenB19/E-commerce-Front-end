@@ -24,6 +24,7 @@ export class UserService {
     return this.http.post(this.PATH_OF_API+"/register",register,{headers:this.requestHeader});
   }
   
+  
   public roleMatch(allowedRoles: any): boolean {
     const userRoles: any = this.userAuthService.getRoles();
   
