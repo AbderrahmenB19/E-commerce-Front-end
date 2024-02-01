@@ -12,7 +12,7 @@ import { FileHandle } from '../_model/file-handle';
 export class ImageProcessingService {
 
   constructor(private sanitaizer:DomSanitizer) { }
-  public createImages(product:Product)
+  public createImages(product:any)
   {
     const productImages:any[]=product.productImages;
     const productImagesToFileHandle:FileHandle[]=[]

@@ -20,5 +20,8 @@ export class ProductService {
   public deletProduct(productId:number){
     return this.http.delete(this.API_PATH+`deleteProduct/${productId}`)
   }
+  public getProductDetailsById(id:number){
+    return this.http.get(this.API_PATH+`getProductDetailsById/${id}`)
+  }
  
 }
