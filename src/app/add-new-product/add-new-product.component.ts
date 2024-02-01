@@ -15,8 +15,9 @@ import { productResolver } from '../_services/productresolve.service';
   styleUrl: './add-new-product.component.css'
 })
 export class AddNewProductComponent implements OnInit {
-
+  isNewProduct=true;
   product:Product ={
+    productId:null,
 
     productName:"",
     productDescription:"",
@@ -28,8 +29,9 @@ export class AddNewProductComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute,private prodService:ProductService, private sanitaizer:DomSanitizer){}
   ngOnInit(): void {
     this.product=this.activatedRoute.snapshot.data["product"];
-    console.log(productResolver)
-    console.log(this.product)
+    if(this.product && this.product.productId){
+      this.isNewProduct=false;
+    }
     
   }
   public addNewProduct(productFrom:NgForm){
@@ -39,6 +41,7 @@ export class AddNewProductComponent implements OnInit {
       error:(er:HttpErrorResponse)=>console.log(er)
     });
     this.product={
+      productId:null,
       productName:"",
       productDescription:"",
       productDiscount:0,
