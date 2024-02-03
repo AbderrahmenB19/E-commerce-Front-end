@@ -1,0 +1,20 @@
+
+.card-container {
+  width: 100%; /* Ensure cards fill the entire grid tile */
+  height: 80%; /* Ensure cards take up the full height of the tile */
+  display: flex; /* Enable flexible layout within the card */
+  flex-direction: column; /* Arrange card content vertically */
+  justify-content: space-between; /* Align content with space between */
+  align-items: center; /* Center content horizontally */
+}
+
+.card-img {
+    width: 100%; /* Ensures image fills available space */
+    height: 200px; /* Set a fixed height for consistent size */
+    object-fit: cover; /* Maintains aspect ratio and prevents cropping */
+  }
+
+.card-body {
+  width: 100%; /* Ensure body content fills the remaining space */
+  padding: 10px; /* Add padding for visual separation */
+}
