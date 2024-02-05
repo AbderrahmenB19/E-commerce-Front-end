@@ -3,6 +3,8 @@ import { ProductService } from '../_services/product.service';
 import { map } from 'rxjs';
 import { Product } from '../_model/product.model';
 import { ImageProcessingService } from '../_services/image-processing.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,7 @@ import { ImageProcessingService } from '../_services/image-processing.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[]=[]
-  constructor(private productService:ProductService,private imageProcessingService:ImageProcessingService){}
+  constructor(private route:Router,private productService:ProductService,private imageProcessingService:ImageProcessingService){}
   ngOnInit(): void {
     this.getAllProduct()
   }
@@ -38,6 +40,11 @@ export class HomeComponent implements OnInit {
 
   getDescriptionVisibility(productId: string): boolean {
     return this.fullDescriptionVisible.get(productId) || false; // Determine current visibility
+  }
+  viewDetails(element:Product){
+    this.route.navigate(["/viewDetails",{productId:element.productId}])
+
+
   }
 
 }

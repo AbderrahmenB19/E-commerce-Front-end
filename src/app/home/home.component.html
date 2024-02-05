@@ -1,26 +1,26 @@
 <div class="container mt-5">
     <mat-grid-list cols="4" rowHeight="2:3" gutterSize="10px">
-      @for (item of products; track $index) {
+        @for (item of products; track $index) {
         <mat-grid-tile>
-          <div class="card card-container"> <div class="card-image" style="border: none;">
-              <img [src]="item.productImages[0]?.url" alt="{{item.productName}}" class="card-img">
+            <div class="card card-container">
+                <div class="card-image" style="border: none;">
+                    <img [src]="item.productImages[0].url" alt="{{item.productName}}" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{item.productName}}</h4>
+                    <p class="card-text">
+                        {{item.productDescription | slice:0:35}} <span *ngIf="item.productDescription.length > 150">
+                            ...
+                            <a (click)="showFullDescription(item.productDescription)">Read more</a> </span>
+                    </p>
+                    <div class="price-info">
+                        <span>TND. <b>{{item.productDiscount}}</b></span> &nbsp;
+                        <span style="text-decoration: line-through;">{{item.productActualPrice}}</span>
+                    </div>
+                    <button mat-raised-button color="warn" type="button" (click)="viewDetails(item)">View Details</button>
+                </div>
             </div>
-            <div class="card-body">
-              <h4 class="card-title">{{item.productName}}</h4>
-              <p class="card-text">
-                {{item.productDescription | slice:0:35}} <span *ngIf="item.productDescription.length > 150">
-                  ...
-                  <a (click)="showFullDescription(item.productDescription)">Read more</a> </span>
-              </p>
-              <div class="price-info">
-                <span>TND. <b>{{item.productDiscount}}</b></span>
-                <span style="text-decoration: line-through;">{{item.productActualPrice}}</span>
-              </div>
-              <button mat-raised-button color="warn" type="button">View Details</button>
-            </div>
-          </div>
         </mat-grid-tile>
-      }
+        }
     </mat-grid-list>
-  </div>
-  
+</div>

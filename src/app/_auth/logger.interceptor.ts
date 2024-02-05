@@ -8,10 +8,13 @@ if (req.headers.get("No-auth")==="True"){
 }
 const fb=inject(UserAuthService)
 const token = fb.getToken();
-const newReq = req.clone({
-  setHeaders:{
-    Authorization : `Bearer ${token}`
-  } })
-  return next(newReq);
+if(token){
+  const newReq = req.clone({
+    setHeaders:{
+      Authorization : `Bearer ${token}`
+    } })
+    return next(newReq);
+}
+return next(req)
   
 }

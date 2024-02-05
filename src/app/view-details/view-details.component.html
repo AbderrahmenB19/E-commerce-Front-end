@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6">
+            <div class="card image-container p-3" style="height: 500px;">
+                <img [src]="data!.productImages[selctedIndex].url" alt="" class="product-zoom-image">
+
+            </div>
+            <mat-grid-list cols="3" rowHeight="1:1" gutterSize="10">
+                @for (item of data?.productImages; track $index) {
+                    <mat-grid-tile style="border: 1px solid lightslategray;">
+                       
+                            <img (click)="onChangeIndex($index)" [src]="item.url" alt="" height="100px" style="cursor: pointer;" >
+                            
+                            
+                        
+                    </mat-grid-tile>
+                }
+                
+                
+              </mat-grid-list>
+            
+            
+        </div>
+        <div class="col-6">
+            <div class="productInformation">
+            <div class="mt-5">
+                <h2>{{data?.productName}}</h2>
+            </div>
+               <div class="mt-3">
+                <h3>Description :</h3> <br>
+
+                <p>{{data?.productDescription}}</p>
+
+
+               </div>
+               <div class="mt-3">
+                TND. <b>{{data?.productDiscount}}</b>&nbsp;<b style="text-decoration: line-through;">{{data?.productActualPrice}}</b>
+               </div>
+               <div class="mt-5 text-center">
+                <button mat-raised-button color="warn" style="width: 350px;"> Buy Now</button>
+               </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
