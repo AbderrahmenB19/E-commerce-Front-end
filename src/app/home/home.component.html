@@ -1,4 +1,10 @@
 <div class="container mt-5">
+    <mat-form-field appearance="fill">
+        <mat-label>Search any product</mat-label>
+        <input matInput #searchByKeyWord (keyup)="search(searchByKeyWord.value)" placeholder="Search" name="searchKey" id="searchKey">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    
     <mat-grid-list cols="4" rowHeight="2:3" gutterSize="10px">
         @for (item of products; track $index) {
         <mat-grid-tile>
@@ -23,4 +29,10 @@
         </mat-grid-tile>
         }
     </mat-grid-list>
+    @if (showLoadButton) {
+        <div class="text-center mt-5" style="padding-bottom: 100px;">
+            <button type="button" mat-raised-button (click)="LoadMore()">Load More</button>
+    
+        </div>
+    }
 </div>

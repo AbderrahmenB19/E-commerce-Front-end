@@ -4,6 +4,7 @@ import { map } from 'rxjs';
 import { Product } from '../_model/product.model';
 import { ImageProcessingService } from '../_services/image-processing.service';
 import { Router } from '@angular/router';
+import { EventEmitter } from 'stream';
 
 
 @Component({
@@ -12,13 +13,15 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+  pageNumber:number=0;
   products: Product[]=[]
+  showLoadButton =false;
   constructor(private route:Router,private productService:ProductService,private imageProcessingService:ImageProcessingService){}
   ngOnInit(): void {
     this.getAllProduct()
   }
-  public getAllProduct(){
-    this.productService.getAllProduct()
+  public getAllProduct(searchKey:String=""){
+    this.productService.getAllProduct(this.pageNumber,searchKey)
     .pipe(
       map((products: Object): Product[] => 
         (products as Product[]).map((product: Product) => this.imageProcessingService.createImages(product))
@@ -27,7 +30,12 @@ export class HomeComponent implements OnInit {
     .subscribe({
       next:(resp:any)=>{
         console.log(resp);
-        this.products=resp;
+        if(resp.length===12){
+          this.showLoadButton=true;
+        }else{
+          this.showLoadButton=false
+        }
+        resp.forEach((x:any)=>this.products.push(x))
       },error:error=>console.log(error)
     })
 
@@ -46,5 +54,25 @@ export class HomeComponent implements OnInit {
 
 
   }
+  LoadMore(){
+    this.pageNumber+=1;
+    this.getAllProduct();
+  }
+  search(keyword: any) {
+    this.pageNumber=0;
+    this.products=[];
+    this.getAllProduct(keyword)
+
+
+
+    
+    console.log(keyword); 
+  }
+  
+  
+
+  
+
+
 
 }

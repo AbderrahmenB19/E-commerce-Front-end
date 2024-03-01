@@ -11,6 +11,8 @@ import { ShowProductDetailsComponent } from './show-product-details/show-product
 import { productResolver } from './_services/productresolve.service';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 import { ViewDetailsResolver } from './_services/view-details-resolver.service';
+import { BuyyComponent } from './buyy/buyy.component';
+import { buyProductRrsolverService } from './_services/buy-product-se-resolver.service';
 
 
 const routes: Routes = [
@@ -33,6 +35,9 @@ const routes: Routes = [
   path:"showProduct", component:ShowProductDetailsComponent, canActivate:[authGuard], data:{roles:["ADMIN"]}
 },{
   path:"viewDetails",component:ViewDetailsComponent,resolve:{viewDetails:ViewDetailsResolver}
+},
+{
+  path:"buy",component:BuyyComponent,canActivate:[authGuard],resolve:{productDetails:buyProductRrsolverService},data:{roles:['USER','ADMIN']}
 }
 ];
 

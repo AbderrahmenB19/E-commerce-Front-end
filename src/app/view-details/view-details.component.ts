@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute,  Router } from '@angular/router';
 import { Product } from '../_model/product.model';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-view-details',
@@ -10,7 +11,7 @@ import { Product } from '../_model/product.model';
 export class ViewDetailsComponent implements OnInit {
   selctedIndex=0;
   
-  constructor(private route:ActivatedRoute){}
+  constructor(private route:ActivatedRoute,private router:Router,private productService:ProductService){}
   data:Product|undefined;
   ngOnInit(): void {
     this.data= this.route.snapshot.data["viewDetails"]
@@ -18,6 +19,17 @@ export class ViewDetailsComponent implements OnInit {
   }
   onChangeIndex(index:number){
     this.selctedIndex=index;
+  }
+  buyNow(id:number|null){
+
+    this.router.navigate(['/buy',{isSingleProductCheckout:true,id:id}])
+  }
+  addToCart(productId:number|null){
+    this.productService.addToCart(productId!).subscribe({
+      next:resp=> console.log(resp),
+      error:err=>console.log(err)
+    })
+
   }
   
   

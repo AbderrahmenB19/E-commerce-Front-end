@@ -23,6 +23,6 @@ export const productResolver: ResolveFn<any>=(route: ActivatedRouteSnapshot, sta
         productActualPrice:0,
         productImages:[]
     
-      }); // Return an empty Observable
+      });
     }
   };

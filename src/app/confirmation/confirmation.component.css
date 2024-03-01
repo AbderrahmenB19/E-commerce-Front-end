@@ -1,0 +1,10 @@
+p{
+    color : green;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+mat-icon{
+    border: 1px solid green;
+    border-radius: 50%;
+    margin-top: 2px;
+}

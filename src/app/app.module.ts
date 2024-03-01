@@ -27,6 +27,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ShowProductImagesDialogComponent } from './show-product-images-dialog/show-product-images-dialog.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
+import { BuyyComponent } from './buyy/buyy.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +44,8 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
     ShowProductDetailsComponent,
     ShowProductImagesDialogComponent,
     ViewDetailsComponent,
+    BuyyComponent,
+    ConfirmationComponent,
     
     
   ],
@@ -58,7 +63,8 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
     MatInputModule,
     MatGridListModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule
 
     
   

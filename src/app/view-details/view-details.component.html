@@ -37,7 +37,8 @@
                 TND. <b>{{data?.productDiscount}}</b>&nbsp;<b style="text-decoration: line-through;">{{data?.productActualPrice}}</b>
                </div>
                <div class="mt-5 text-center">
-                <button mat-raised-button color="warn" style="width: 350px;"> Buy Now</button>
+                <button mat-raised-button color="warn" style="width: 350px;"(click)="buyNow(data!.productId)"> Buy Now</button> &nbsp;
+                <button mat-raised-button style="width: 200px;" (click)="addToCart(data!.productId)">Add To Cart <i class="bi bi-cart"></i></button>
                </div>
             </div>
             
